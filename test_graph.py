@@ -1,4 +1,3 @@
-
 import math
 Inf = math.inf
 

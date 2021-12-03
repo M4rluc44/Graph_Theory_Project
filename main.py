@@ -1,6 +1,6 @@
 import test_graph
 import functions
-
+from functions import *
 exit = True
 
 while exit:
@@ -10,18 +10,12 @@ while exit:
     # To display the chosen graph
     graph_test = test_graph.graph_test[num - 1]
     print("\nInitial graph :")
-    for i in range(len(test_graph.graph_test[num - 1])):
-        print("")
-        for j in range(len(test_graph.graph_test[num - 1][i])):
-            print(test_graph.graph_test[num - 1][i][j], "|", end=' ')
-
+    display_table(graph_test)
+    print("\n")
     # To display the resulted graph
-    result = functions.floyd_warshall(test_graph.graph_test[num - 1])
-    print("\nFloyd Warshall graph")
-    for i in range(len(result)):
-        print("")
-        for j in range(len(result[i])):
-            print(result[i][j], "|", end=' ')
+    result = floyd_warshall(test_graph.graph_test[num - 1])
+    print("\n\nFloyd Warshall graph", end=' ')
+    display_table(result)
 
     # Here we need to say if there is an absorbent cycle or not
 
@@ -31,10 +25,3 @@ while exit:
     if question == "No":
         exit = False
 
-import matplotlib.pyplot as plt
-import networkx as nx
-import numpy as np
-
-G = nx.from_numpy_matrix(np.array(test_graph.graph_test[num - 1]))
-nx.draw(G, with_labels=True)
-plt.show()
