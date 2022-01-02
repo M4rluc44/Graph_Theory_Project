@@ -19,11 +19,22 @@ while exit:
     # To display the resulted graph
 
     result = floyd_warshall(test_graph.graph_test[num - 1])
-    print("\n\nresulting table :")
-    display_table(result)
-    u = int(input("\nEnter the initial vertex of the shortest path you want to find"))
-    v = int(input("\nEnter the final vertex of the shortest path you want to find"))
-    display_path(result, v, u)
+    if not result:
+        print("There is an absorbent cycle")
+    else:
+        print("\n\nresulting table :")
+        display_table(result)
+
+        u = int(input("\nEnter the initial vertex of the shortest path you want to find"))
+        if u<0 or u>len(result):
+            print("wrong entry, please enter an integer between 0 and the number of vertex")
+            u = int(input("\nEnter the initial vertex of the shortest path you want to find"))
+        v = int(input("\nEnter the final vertex of the shortest path you want to find"))
+        if u < 0 or u > len(result) or v == u:
+            print("wrong entry, please enter an integer between 0 and the number of vertex")
+            v = int(input("\nEnter the final vertex of the shortest path you want to find"))
+
+        display_path(result, v, u)
 
     print("\nDo you want to test another graph ? (Yes or No)")
     question = input()

@@ -19,7 +19,13 @@ graph_test = [   [[0, 1, 5, Inf], # test graph 1
                 [[0, 1, -5, Inf], # test graph 3
                  [Inf, 0, -3, 2],
                  [Inf, 4, 0, 2],
-                 [Inf, Inf, Inf, 0]]
+                 [Inf, Inf, Inf, 0]],
+
+                [[0, 1, -5, Inf], # test graph 5
+                 [Inf, -1, -3, 2],
+                 [6, 4, 0, 2],
+                 [Inf, Inf, 2, 0]]
+
             ]
 
 
