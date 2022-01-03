@@ -1,16 +1,17 @@
 from copy import deepcopy
 import math
 Inf = math.inf
-maxsize = 100000000
-
 
 # Floyd Warshall algorithm, displaying all needed arrays and returning the matrix P, showing the predecesor
 # of each vertex (the matrix P, the adjency matrix)
 def floyd_warshall(graph_test):
     # We make deepcopy or we have problems with array modification (not able to run the algo again for
     # example
+    to_none(graph_test) # du to problem with deepcopy, needed when the user do another graph
     graph = deepcopy(graph_test)
     P = deepcopy(graph_test)
+    table_p = []
+    table_l = []
 
     for o in range(len(graph)):
         if graph[o][o] is not None:
@@ -34,17 +35,13 @@ def floyd_warshall(graph_test):
                 graph_test[m][n] = Inf
 
     for m in range(len(P)):
-        print("")
         graph[m][m] = min(0, graph_test[n][n])
     # End of table initialization
 
-    # Initial tables
-    print('Initial table P')
-    display_table(P)
-    print("\n")
-    print("Initial table L")
-    display_table(graph)
-    # End of initial tables
+    # Initial tables storage
+    table_p.append(deepcopy(P))
+    table_l.append(deepcopy(graph))
+    # End of initial tables storage
 
     for i in range(len(graph)):
         for j in range(len(graph[i])):
@@ -58,26 +55,37 @@ def floyd_warshall(graph_test):
             if graph[o][o] < 0:
                 return False
 
-        # On affiche la table L
-        print("\n\nItération n°", i + 1, " table L : ", end=' ')
-        display_table(graph)
-        # Fin affichage table L
+        # On store la table L
+        table_l.append(graph)
+        # Fin storage table L
 
-        # On affiche la table P ici
-        print("\n\nItération n°", i + 1, " table P : ", end=' ')
-        display_table(P)
-        # Fin affichage table P
-    print("\n\nWe end here at the iteration n°", i + 1, " with final tables P and L above\n")
-    to_float(P)
+        # On store la table P ici
+        table_p.append(deepcopy(P))
+        # Fin store table P
+
+    for i in range(len(table_p)):
+        if i == 0:
+            print('\n\nInitial table L')
+            display_table(table_l[i])
+            print("\n\nInitial table P")
+            display_table(table_p[i])
+        else:
+            print("\n\nItération n°", i, " table L : ", end=' ')
+            display_table(table_l[i])
+            print("\n\nItération n°", i, " table P : ", end=' ')
+            display_table(table_p[i])
+
+    print("\n\nWe end here at the iteration n°", i + 1, " with final tables P and L above")
+
     return P
 
 
 # Change all Infinity to zero after doing the calculation
-def to_float(graph):
+def to_none(graph):
     for i in range(len(graph)):
         for j in range(len(graph[i])):
-            if graph[i][j] is None:
-                graph[i][j] = maxsize
+            if graph[i][j] is Inf:
+                graph[i][j] = None
 
 # Display the table of a graph
 def display_table(graph):
