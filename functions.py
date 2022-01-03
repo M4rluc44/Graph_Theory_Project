@@ -1,7 +1,7 @@
 from copy import deepcopy
 import math
-
 Inf = math.inf
+maxsize = 100000000
 
 
 # Floyd Warshall algorithm, displaying all needed arrays and returning the matrix P, showing the predecesor
@@ -14,7 +14,7 @@ def floyd_warshall(graph_test):
 
     for o in range(len(graph)):
         if graph[o][o] is not None:
-            if graph[o][o] <0:
+            if graph[o][o] < 0:
                 return False
 
     # begin of table initialization
@@ -67,17 +67,17 @@ def floyd_warshall(graph_test):
         print("\n\nItération n°", i + 1, " table P : ", end=' ')
         display_table(P)
         # Fin affichage table P
-    print("\n\nWe end here at the iteration n°", i+1, " with final tables P and L above\n")
+    print("\n\nWe end here at the iteration n°", i + 1, " with final tables P and L above\n")
+    to_float(P)
     return P
 
 
 # Change all Infinity to zero after doing the calculation
-def to_zero(graph):
+def to_float(graph):
     for i in range(len(graph)):
         for j in range(len(graph[i])):
-            if graph[i][j] == float('Inf'):
-                graph[i][j] = 0
-
+            if graph[i][j] is None:
+                graph[i][j] = maxsize
 
 # Display the table of a graph
 def display_table(graph):
@@ -87,22 +87,7 @@ def display_table(graph):
             print(graph[i][j], "|", end=' ')
 
 
-# function to display the graph with design, not very useful
-def display_graph(graph):
-    import matplotlib.pyplot as plt
-    import networkx as nx
-    import numpy as np
-
-    G = nx.DiGraph()
-    for i in range(len(graph)):
-        for j in range(len(graph)):
-            if graph[i][j] == 1:
-                G.add_edge(i, j)
-    nx.draw(G)
-    plt.show()
-
-    # to display the shortest path between two vertex (u the first and v the final)
-
+# to display the shortest path between two vertex (u the first and v the final)
 
 def display_path(graph, u, v):
     route = [v]
@@ -114,6 +99,7 @@ def display_path(graph, u, v):
 
 
 def printPath(path, v, u, route):
+    print("u : ", u, " v: ", v)
     if path[v][u] == v:
         return
     printPath(path, v, path[v][u], route)
