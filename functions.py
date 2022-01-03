@@ -112,3 +112,16 @@ def printPath(path, v, u, route):
         return
     printPath(path, v, path[v][u], route)
     route.append(path[v][u])
+
+def this_is_the_path(p, u, v):
+    path = [u]
+    while path[-1] != v and path[-1] is not None:
+        path.append(p[v][path[-1]])
+    if path[-1] is not None:
+        path.reverse()
+        print(f'\n------    The shortest path from {v} —> {u} is  ', end="")
+        for i in range(len(path)-1):
+            print(path[i], "-> ", end="")
+        print(path[i+1], "    ------\n")
+    else:
+        print(f'There s no shortest path  from {v} to {u}\n')

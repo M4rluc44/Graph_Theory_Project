@@ -33,7 +33,8 @@ while exit:
                 print("wrong entry, please enter an integer between 0 and the number of vertex")
                 v = int(input("\nEnter the final vertex of the shortest path you want to find"))
 
-            display_path(result, v, u)
+
+            this_is_the_path(result, v, u)
             rep = input("Do you want to find another shortest path ? (No or Yes)")
             if rep == "No":
                 choice = False
