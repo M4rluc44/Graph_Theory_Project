@@ -5,26 +5,85 @@ Inf = math.inf
 # For example, set a 0 when it's a relation with the same relation of 1 with 1 is none, so 0 here
 # And put Inf when the relation doesn't exits between twoo (no relation between 1 and 2 ? so put Inf)
 
-graph_test = [   [[0, 1, 5, Inf], # test graph 1
-                 [Inf, 0, -3, 5],
-                 [Inf, Inf, 0, 2],
-                 [Inf, Inf, Inf, 0]],
+graph_test = [   [[None, 1, 5, None], # test graph 1
+                 [None, None, -3, 5],
+                 [None, None, None, 2],
+                 [None, None, None, None]],
 
-                [[0, 1, 4, Inf, Inf], # test graph from website
-                 [Inf, 0, 2, Inf, Inf],
-                 [Inf, Inf, 0, 3, 8],
-                 [6, Inf, Inf, 0, 4],
-                 [5, Inf, Inf, Inf, 0]],
+                [[None, 1, 5, None], # test graph 2
+                 [None, None, 3, 5],
+                 [None, None, None, 2],
+                 [None, None, None, None]],
 
-                [[0, 1, -5, Inf], # test graph 3
-                 [Inf, 0, -3, 2],
-                 [Inf, 4, 0, 2],
-                 [Inf, Inf, Inf, 0]],
+                [[None, 1, -5, None], # test graph 3
+                 [None, None, -3, 2],
+                 [None, 4, None, 2],
+                 [None, None, None, None]],
 
-                [[0, 1, -5, Inf], # test graph 5
-                 [Inf, -1, -3, 2],
-                 [6, 4, 0, 2],
-                 [Inf, Inf, 2, 0]]
+                [[None, 1, -5, None], # test graph 4
+                 [None, None, -3, 2],
+                 [6, 4, None, 2],
+                 [None, None, 2, None]],
+
+                [[None, 1, -5, None], # test graph 5
+                 [None, -1, -3, 2],
+                 [6, 4, None, 2],
+                 [None, None, 2, None]],
+
+                [[None, 2, -5, None, None, None, None], # test graph 6
+                 [None, 3, -3, 3, None, None, None],
+                 [7, 4, None, 3, None, None, None],
+                 [None, None, 2, None, None, None, None],
+                 [None, None, None, None, None, 5, None],
+                 [None, None, None, None, 2, 0, -2],
+                 [None, None, None, None, None, None, None]],
+
+                [[None, 1, 2, 1, None], # test graph 7
+                 [None, None, None, None, 3],
+                 [None, None, None, 1, 1],
+                 [None, None, None, None, 4],
+                 [None, None, None, None, None]],
+
+                [[None, 1, None, None, None], # test graph 8
+                 [None, None, 2, None, None],
+                 [None, None, None, 3, None],
+                 [None, None, None, None, -6],
+                 [0, None, None, None, None]],
+
+                [[None, 1, -5, None], # test graph 9
+                 [None, None, -3, 2],
+                 [None, -1, None, 2],
+                 [None, None, None, None]],
+
+                [[None, None, 2, 1, None, None, None, None], # test graph 10
+                 [1, None, None, None, 1, None, None, None],
+                 [None, None, None, -2, None, None, None, None],
+                 [None, None, 7, None, 4, None, None, None],
+                 [None, 3, -1, None, None, None, None, None],
+                 [None, None, None, None, None, 2, None, None],
+                 [None, None, None, None, None, -2, None, -2],
+                 [None, None, None, None, None, None, None, None]],
+
+                [[None, None, 2, 1, None], # test graph 11
+                 [1, 2, None, None, None],
+                 [None, None, None, -2, None],
+                 [None, None, None, None, 4],
+                 [None, 3, -1, None, None]],
+
+                [[None, 1, 2, 1, None], # test graph 12
+                 [None, 2, None, None, None],
+                 [None, None, None, -2, 1],
+                 [None, None, None, None, 4],
+                 [None, 3, None, None, None]],
+
+                [[None, None, 2, 1, None, None, None, None], # test graph 13
+                 [1, None, None, None, 1, None, None, None],
+                 [None, None, None, -2, None, None, None, None],
+                 [None, None, 7, None, 4, None, None, None],
+                 [None, 3, -1, None, None, None, None, None],
+                 [None, None, None, None, None, None, 1, None],
+                 [None, None, None, None, None, -2, None, -2],
+                 [None, None, None, None, None, None, None, None]]
 
             ]
 
