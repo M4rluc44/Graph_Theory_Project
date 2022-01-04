@@ -21,7 +21,7 @@ while exit:
 
     result = floyd_warshall(test_graph.graph_test[num - 1])
     if not result:
-        print("\nThere is an absorbent cycle")
+        print("\n\nThere is an absorbent cycle")
     else:
         while choice:
             u = int(input("\nEnter the initial vertex of the shortest path you want to find"))

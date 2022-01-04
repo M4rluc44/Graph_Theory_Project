@@ -13,6 +13,7 @@ def floyd_warshall(graph_test):
     table_p = []
     table_l = []
 
+    # to detecte an aborbent cycle
     for o in range(len(graph)):
         if graph[o][o] is not None:
             if graph[o][o] < 0:
@@ -96,23 +97,6 @@ def display_table(graph):
 
 
 # to display the shortest path between two vertex (u the first and v the final)
-
-def display_path(graph, u, v):
-    route = [v]
-    printPath(graph, v, u, route)
-    print(f'The shortest path from {v} —> {u} is  ', end="")
-    for i in range(len(route)):
-        print(route[i], "-> ", end="")
-    print(u)
-
-
-def printPath(path, v, u, route):
-    print("u : ", u, " v: ", v)
-    if path[v][u] == v:
-        return
-    printPath(path, v, path[v][u], route)
-    route.append(path[v][u])
-
 def this_is_the_path(p, u, v):
     path = [u]
     while path[-1] != v and path[-1] is not None:
